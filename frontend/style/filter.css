@@ -28,6 +28,13 @@
   background-color: var(--colorSecondary);
   color: var(--colorPrimary);
 }
+select {
+  background-color: #24242a;
+  border: none;
+  text-align: center;
+  font-size: 1.2em;
+}
+
 .container {
   display: flex;
   gap: 2rem;

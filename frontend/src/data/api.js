@@ -2,6 +2,7 @@ import axios from "axios";
 
 let data;
 let dataSort;
+let dataSortAverage;
 
 function sortData() {
   dataSort = [];
@@ -55,24 +56,39 @@ function average() {
     return somme / num;
   };
 
-  dataSort.forEach((station, index) => {
+  dataSort.forEach((station) => {
     const moyenne = sum(station);
-    dataSort[index]["moyenne"] = moyenne;
+    const newStation = { ...station, moyenne: moyenne };
+    dataSortAverage.push(newStation);
   });
 }
 
-function sortAverage(setData) {
-  console.log("average");
-  dataSort = dataSort.sort((a, b) => {
+function sortAverage() {
+  average();
+  dataSortAverage = dataSortAverage.sort((a, b) => {
     return a.moyenne - b.moyenne;
   });
-  setData(dataSort);
+  return dataSortAverage;
 }
 
-export default function getData(url, setData, city, setPointGeo) {
+function getDataSort() {
+  return dataSort;
+}
+
+function getData(url, setFuelList, filters) {
   axios.get(url).then((response) => {
     data = response.data.records;
-    setData(sortData());
-    average();
+    dataSort = [];
+    dataSortAverage = [];
+    sortData();
+
+    if (filters.moinsChere) {
+      sortAverage();
+      setFuelList(dataSortAverage);
+    } else {
+      setFuelList(dataSort);
+    }
   });
 }
+
+export { getData, sortAverage, getDataSort };

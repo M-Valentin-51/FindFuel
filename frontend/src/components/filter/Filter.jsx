@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../../style/filter.css";
 import PropTypes from "prop-types";
 import Fuels from "./Fuels";
 import Buttons from "./Buttons";
 
 function Filter(props) {
-  const { setIsShown, filters, setFilters } = props;
+  const { setIsShown, filters, setFilters, setFuelList, setRayon } = props;
+
   return (
     <div className="containerFilter">
       <Fuels />
-      <Buttons filters={filters} setFilters={setFilters} />
+      <Buttons
+        filters={filters}
+        setFilters={setFilters}
+        setFuelList={setFuelList}
+        setRayon={setRayon}
+      />
       <button
         type="button"
         className="close"
@@ -29,5 +35,7 @@ Filter.propTypes = {
     moinsChere: PropTypes.bool.isRequired,
   }).isRequired,
   setFilters: PropTypes.func.isRequired,
+  setFuelList: PropTypes.func.isRequired,
+  setRayon: PropTypes.func.isRequired,
 };
 export default Filter;
