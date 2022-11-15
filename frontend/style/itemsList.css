@@ -1,0 +1,92 @@
+.station {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  font-size: 0.8em;
+  border-bottom: 2px solid #2171a3;
+  gap: 2px;
+}
+
+.stationInfo {
+  display: flex;
+  flex-direction: column;
+  background-color: #24242a;
+  color: aliceblue;
+}
+.stationInfo header {
+  justify-content: space-around;
+  background-color: #24242a;
+}
+.stationInfo > img {
+  width: 40px;
+}
+.fuelListing {
+  display: flex;
+  align-items: center;
+  background-color: #24242a;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.figure {
+  margin: 5px;
+  height: auto;
+}
+.figure {
+  border: 2px solid black;
+  font-size: 1.3em;
+  border-radius: 5px;
+  padding: 1rem;
+  background-color: #24242a;
+  color: wheat;
+}
+.figure p {
+  color: aliceblue;
+}
+.id1 {
+  color: yellow;
+  border-color: yellow;
+}
+.id2,
+.id6 {
+  color: #458245;
+  border-color: #458245;
+}
+.id3 {
+  color: #019eff;
+  border-color: #019eff;
+}
+.id4 {
+  color: #2171a3;
+  border-color: #2171a3;
+}
+.id5 {
+  color: #07c407;
+  border-color: #07c407;
+}
+
+.imageFavorite {
+  height: 20px;
+  width: 20px;
+  --position: absolute;
+  --right: 0px;
+}
+
+.circleColor {
+  height: 20px;
+  width: 20px;
+  background-color: rgb(49, 147, 41);
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.listing {
+  overflow: auto;
+  background-color: #019eff;
+  z-index: 1;
+}
+.stationInfo button {
+  background-color: #24242a;
+  border: none;
+}

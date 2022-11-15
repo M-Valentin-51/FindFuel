@@ -1,0 +1,21 @@
+.popup div:nth-child(1) {
+  --padding: 1rem 0.2rem;
+  --width: 33%;
+  --border-bottom: 1px solid black;
+}
+
+.popup {
+  --width: max-content;
+}
+.popup section {
+  font-size: 1em;
+}
+.container {
+  z-index: 1;
+}
+
+.rayon {
+  margin: 1rem;
+  font-size: 1em;
+  font-weight: bold;
+}
