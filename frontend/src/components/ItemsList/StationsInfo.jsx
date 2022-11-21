@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "../../../style/itemsList.css";
 import fullStar from "@assets/fullstar.png";
 import emptyStar from "@assets/emptystar.png";
+import { calculDistance } from "../../function/distance";
 
 function StationsInfo(props) {
   const { station } = props;
@@ -32,7 +33,7 @@ function StationsInfo(props) {
           alt="favorite"
         />
       </button>
-      <p className="stateStation">6.8 KM</p>
+      <p className="stateStation">9 km</p>
       <p>
         Prix moyens de tous les carburant{" "}
         {Math.round(station.moyenne * 100) / 100}€

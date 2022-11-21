@@ -5,7 +5,7 @@
 }
 
 .popup {
-  --width: max-content;
+  --max-width: 60vw;
 }
 .popup section {
   font-size: 1em;
@@ -18,4 +18,35 @@
   margin: 1rem;
   font-size: 1em;
   font-weight: bold;
+}
+.containerList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  --border: 2px solid black;
+  --font-size: 1.3em;
+  border-radius: 5px;
+  --padding: 1rem;
+  background-color: #24242a;
+  color: wheat;
+}
+.date {
+  font-size: 0.6em;
+}
+
+
+.popup table {
+  --background-color: #24242a;
+}
+.popup td {
+  padding: 1rem 0.2rem;
+  width: 33%;
+  border-bottom: 1px solid black;
+}
+
+tr th {
+  padding: 0.3rem;
+}
+.popup {
+  width: max-content;
 }

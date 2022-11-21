@@ -5,7 +5,8 @@ import Fuels from "./Fuels";
 import Buttons from "./Buttons";
 
 function Filter(props) {
-  const { setIsShown, filters, setFilters, setFuelList, setRayon } = props;
+  const { setIsShown, filters, setFilters, setFuelList, setRayon, rayon } =
+    props;
 
   return (
     <div className="containerFilter">
@@ -15,6 +16,7 @@ function Filter(props) {
         setFilters={setFilters}
         setFuelList={setFuelList}
         setRayon={setRayon}
+        rayon={rayon}
       />
       <button
         type="button"
@@ -37,5 +39,6 @@ Filter.propTypes = {
   setFilters: PropTypes.func.isRequired,
   setFuelList: PropTypes.func.isRequired,
   setRayon: PropTypes.func.isRequired,
+  rayon: PropTypes.string.isRequired,
 };
 export default Filter;

@@ -81,6 +81,7 @@ function getData(url, setFuelList, filters) {
     dataSort = [];
     dataSortAverage = [];
     sortData();
+    console.log(dataSort);
 
     if (filters.moinsChere) {
       sortAverage();

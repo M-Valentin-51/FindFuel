@@ -5,8 +5,10 @@ import "../../../style/filter.css";
 import { getDataSort, sortAverage } from "../../data/api";
 
 function Buttons(props) {
-  const [select, setSelect] = useState(true);
-  const { filters, setFilters, setFuelList, setRayon } = props;
+  const { filters, setFilters, setFuelList, setRayon, rayon } = props;
+
+  const listRayons = ["10000", "20000", "30000", "40000", "50000"];
+
   function changeFilter(id) {
     if (id === "moinsChere") {
       setFilters({
@@ -53,13 +55,22 @@ function Buttons(props) {
         Favoris
       </button>
       <div>
-        <select name="d" id="d" onChange={(e) => setRayon(e.target.value)}>
-          <option value="10">10</option>
-          <option value="20000">20</option>
-          <option value="30000">30</option>
-          <option value="40000">40</option>
-          <option value="50000">50</option>
-          <option value="60000">60</option>
+        <select onChange={(e) => setRayon(e.target.value)}>
+          {listRayons.map((elt) => {
+            const select = elt === rayon;
+            if (select) {
+              return (
+                <option key={elt} value={elt} selected>
+                  {parseInt(elt) / 1000}
+                </option>
+              );
+            }
+            return (
+              <option key={elt} value={elt}>
+                {parseInt(elt) / 1000}
+              </option>
+            );
+          })}
         </select>
         <label htmlFor="d">Distance</label>
       </div>
@@ -74,6 +85,7 @@ Buttons.propTypes = {
   setFilters: PropTypes.func.isRequired,
   setFuelList: PropTypes.func.isRequired,
   setRayon: PropTypes.func.isRequired,
+  rayon: PropTypes.string.isRequired,
 };
 
 export default Buttons;

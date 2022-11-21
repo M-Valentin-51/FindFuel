@@ -9,6 +9,7 @@ import {
 import * as L from "leaflet";
 import PropTypes, { number } from "prop-types";
 import "../../../style/leaflet.css";
+import getLogo from "../../function/logoCarburant";
 
 function ChangeView(props) {
   const { center, zoom } = props;
@@ -51,23 +52,38 @@ function Leaflet(props) {
       {fuelList.map((fuel, index) => (
         <Marker key={fuel.id} position={fuel.geom} icon={changeColor(index)}>
           <Popup className="popup">
-            <section>
-              <p>
-                {fuel.adresse} {fuel.ville}
-              </p>
-              <div>
+            <table>
+              <thead>
+                <tr>
+                  <th colSpan="3">
+                    {fuel.adresse} {fuel.ville}
+                  </th>
+                </tr>
+                <tr>
+                  <th>Carburants</th>
+                  <th>Prix</th>
+                  <th>Mise a jour</th>
+                </tr>
+              </thead>
+              <tbody>
                 {fuel.carburants.map((elt) => {
                   const date = new Date(elt.date);
                   return (
-                    <div className={` figure id${elt.carburantId}`}>
-                      <p>{elt.carburant}</p>
-                      <p>{elt.prix} €</p>
-                      <p>{`${date.getDate()}/${date.getMonth()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`}</p>
-                    </div>
+                    <tr key={elt.carburant}>
+                      <td>
+                        <img
+                          className="logoCarburant"
+                          src={getLogo(elt.carburantId)}
+                          alt="logo"
+                        />
+                      </td>
+                      <td>{elt.prix} €</td>
+                      <td>{`${date.getDate()}/${date.getMonth()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`}</td>
+                    </tr>
                   );
                 })}
-              </div>
-            </section>
+              </tbody>
+            </table>
           </Popup>
         </Marker>
       ))}{" "}

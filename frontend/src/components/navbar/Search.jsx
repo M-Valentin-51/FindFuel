@@ -6,7 +6,7 @@ import axios from "axios";
 import FilterButton from "../filter/FilterButton";
 
 function Search(props) {
-  const { setVille, eventFilterButton } = props;
+  const { setVille, eventFilterButton, setCurrentPosition } = props;
   const [city, setCity] = useState("");
 
   function handleClick(e) {
@@ -16,6 +16,7 @@ function Search(props) {
   }
   function handleValidation() {
     navigator.geolocation.getCurrentPosition((position) => {
+      setCurrentPosition(position);
       if (position) {
         axios
           .get(
@@ -56,5 +57,6 @@ function Search(props) {
 Search.propTypes = {
   setVille: PropTypes.func.isRequired,
   eventFilterButton: PropTypes.func.isRequired,
+  setCurrentPosition: PropTypes.func.isRequired,
 };
 export default Search;

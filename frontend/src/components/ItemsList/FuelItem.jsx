@@ -1,14 +1,19 @@
 import PropTypes from "prop-types";
 import React from "react";
 import "../../../style/itemsList.css";
+import getLogo from "../../function/logoCarburant";
 
 function FuelItem(props) {
   const { fuel } = props;
   return (
-    <div className={`figure id${fuel.carburantId}`}>
-      <div>{fuel.carburant}</div>
-      <p>{fuel.prix} €</p>
-    </div>
+    <figure className="figure">
+      <img
+        src={getLogo(fuel.carburantId)}
+        alt="Fuels"
+        className="logoCarburant"
+      />
+      <figcaption>{fuel.prix}</figcaption>
+    </figure>
   );
 }
 

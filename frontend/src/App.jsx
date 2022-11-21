@@ -4,6 +4,8 @@ import NavBar from "./components/navbar/NavBar";
 import StationListing from "./components/ItemsList/StationListing";
 import Leaflet from "./components/map/Leaflet";
 import "./App.css";
+import "../style/itemsList.css";
+import "../style/leaflet.css";
 import { getData, getDataSort, sortAverage } from "./data/api";
 import Filter from "./components/filter/Filter";
 
@@ -19,6 +21,7 @@ function App() {
     plusProche: true,
     moinsChere: false,
   });
+  const [currentPosition, setCurrentPosition] = useState([]);
 
   const eventFilterButton = () => {
     setIsShown(!isShown);
@@ -71,6 +74,7 @@ function App() {
           setFilters={setFilters}
           setFuelList={setFuelList}
           setRayon={setRayon}
+          rayon={rayon}
         />
       )}
       <Leaflet fuelList={fuelList} geo={pointGeo} rayon={rayon} />
@@ -78,7 +82,11 @@ function App() {
         {visible ? "⇩" : "⇧"}
       </button>
       {visible && <StationListing fuelList={fuelList} />}
-      <NavBar setVille={setCity} eventFilterButton={eventFilterButton} />
+      <NavBar
+        setVille={setCity}
+        eventFilterButton={eventFilterButton}
+        setCurrentPosition={setCurrentPosition}
+      />
     </div>
   );
 }
