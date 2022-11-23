@@ -5,7 +5,14 @@ import fullStar from "@assets/fullstar.png";
 import emptyStar from "@assets/emptystar.png";
 import { calculDistance } from "../../function/distance";
 
+// context
+
+import { useCurrentPosition } from "../../contexts/CurrentPositionContext";
+
 function StationsInfo(props) {
+  const { currentPosition } = useCurrentPosition();
+
+  console.log(currentPosition);
   const { station } = props;
   const [isfavorite, setIsFavorite] = useState(false);
   function handleFavorite() {
@@ -33,10 +40,12 @@ function StationsInfo(props) {
           alt="favorite"
         />
       </button>
-      <p className="stateStation">9 km</p>
+      <p className="stateStation">
+        {calculDistance(currentPosition, station.geom)} km
+      </p>
       <p>
         Prix moyens de tous les carburant{" "}
-        {Math.round(station.moyenne * 100) / 100}€
+        {station.moyenne && Math.round(station.moyenne * 100) / 100}€
       </p>
     </div>
   );

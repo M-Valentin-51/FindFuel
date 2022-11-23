@@ -4,8 +4,14 @@ import "../../../style/filter.css";
 // import sortAverage from "../../data/api";
 import { getDataSort, sortAverage } from "../../data/api";
 
+// context
+
+import { useFuelList } from "../../contexts/FuelListContext";
+
 function Buttons(props) {
-  const { filters, setFilters, setFuelList, setRayon, rayon } = props;
+  const { setFuelList } = useFuelList();
+
+  const { filters, setFilters, setRayon, rayon } = props;
 
   const listRayons = ["10000", "20000", "30000", "40000", "50000"];
 
@@ -83,7 +89,6 @@ Buttons.propTypes = {
     moinsChere: PropTypes.bool.isRequired,
   }).isRequired,
   setFilters: PropTypes.func.isRequired,
-  setFuelList: PropTypes.func.isRequired,
   setRayon: PropTypes.func.isRequired,
   rayon: PropTypes.string.isRequired,
 };

@@ -14,7 +14,6 @@ function Filter(props) {
       <Buttons
         filters={filters}
         setFilters={setFilters}
-        setFuelList={setFuelList}
         setRayon={setRayon}
         rayon={rayon}
       />
@@ -37,7 +36,6 @@ Filter.propTypes = {
     moinsChere: PropTypes.bool.isRequired,
   }).isRequired,
   setFilters: PropTypes.func.isRequired,
-  setFuelList: PropTypes.func.isRequired,
   setRayon: PropTypes.func.isRequired,
   rayon: PropTypes.string.isRequired,
 };

@@ -76,6 +76,7 @@ function getDataSort() {
 }
 
 function getData(url, setFuelList, filters) {
+ 
   axios.get(url).then((response) => {
     data = response.data.records;
     dataSort = [];

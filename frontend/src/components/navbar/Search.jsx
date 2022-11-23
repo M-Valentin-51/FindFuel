@@ -5,8 +5,14 @@ import locationIcon from "@assets/localisation.png";
 import axios from "axios";
 import FilterButton from "../filter/FilterButton";
 
+// context
+
+import { useCurrentPosition } from "../../contexts/CurrentPositionContext";
+
 function Search(props) {
-  const { setVille, eventFilterButton, setCurrentPosition } = props;
+  const { setCurrentPosition } = useCurrentPosition();
+
+  const { setVille, eventFilterButton } = props;
   const [city, setCity] = useState("");
 
   function handleClick(e) {
@@ -16,7 +22,7 @@ function Search(props) {
   }
   function handleValidation() {
     navigator.geolocation.getCurrentPosition((position) => {
-      setCurrentPosition(position);
+      setCurrentPosition([position.coords.latitude, position.coords.longitude]);
       if (position) {
         axios
           .get(

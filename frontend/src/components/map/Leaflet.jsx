@@ -11,6 +11,11 @@ import PropTypes, { number } from "prop-types";
 import "../../../style/leaflet.css";
 import getLogo from "../../function/logoCarburant";
 
+// context
+import { useFuelList } from "../../contexts/FuelListContext";
+
+// fin context
+
 function ChangeView(props) {
   const { center, zoom } = props;
   const map = useMap();
@@ -19,7 +24,9 @@ function ChangeView(props) {
 }
 
 function Leaflet(props) {
-  const { fuelList, geo, rayon } = props;
+  const { fuelList } = useFuelList();
+
+  const { geo, rayon } = props;
   const LeafIcon = L.Icon.extend({
     options: {},
   });
@@ -91,20 +98,6 @@ function Leaflet(props) {
   );
 }
 Leaflet.propTypes = {
-  fuelList: PropTypes.arrayOf(
-    PropTypes.shape({
-      adresse: PropTypes.string.isRequired,
-      ville: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired,
-      geom: PropTypes.arrayOf(PropTypes.number).isRequired,
-      carburants: PropTypes.arrayOf(
-        PropTypes.shape({
-          carburant: PropTypes.string.isRequired,
-          prix: PropTypes.number.isRequired,
-        })
-      ),
-    }).isRequired
-  ).isRequired,
   geo: PropTypes.arrayOf(number).isRequired,
   rayon: PropTypes.string.isRequired,
 };

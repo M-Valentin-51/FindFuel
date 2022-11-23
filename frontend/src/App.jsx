@@ -9,8 +9,14 @@ import "../style/leaflet.css";
 import { getData, getDataSort, sortAverage } from "./data/api";
 import Filter from "./components/filter/Filter";
 
+// context
+
+import { useFuelList } from "./contexts/FuelListContext";
+// fin context
+
 function App() {
-  const [fuelList, setFuelList] = useState([]);
+  const { setFuelList } = useFuelList();
+
   const [city, setCity] = useState("reims");
   const [isShown, setIsShown] = useState(false);
   const [pointGeo, setPointGeo] = useState([49.259037, 4.031781]);
@@ -21,7 +27,6 @@ function App() {
     plusProche: true,
     moinsChere: false,
   });
-  const [currentPosition, setCurrentPosition] = useState([]);
 
   const eventFilterButton = () => {
     setIsShown(!isShown);
@@ -72,21 +77,16 @@ function App() {
           setIsShown={setIsShown}
           filters={filters}
           setFilters={setFilters}
-          setFuelList={setFuelList}
           setRayon={setRayon}
           rayon={rayon}
         />
       )}
-      <Leaflet fuelList={fuelList} geo={pointGeo} rayon={rayon} />
+      <Leaflet geo={pointGeo} rayon={rayon} />
       <button type="button" onClick={() => changeView()}>
         {visible ? "⇩" : "⇧"}
       </button>
-      {visible && <StationListing fuelList={fuelList} />}
-      <NavBar
-        setVille={setCity}
-        eventFilterButton={eventFilterButton}
-        setCurrentPosition={setCurrentPosition}
-      />
+      {visible && <StationListing />}
+      <NavBar setVille={setCity} eventFilterButton={eventFilterButton} />
     </div>
   );
 }

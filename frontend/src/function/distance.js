@@ -24,6 +24,6 @@ export function calculDistance([currentLat , currentLong ], [latB, longB]){
 
   const distance = Math.sqrt((myX - stationX) ** 2 + (myY - stationY) ** 2 + (myZ - stationZ) ** 2)
 
-  console.log(Math.round(distance * 100) / 100);
+  return (Math.round(distance * 100) / 100);
 }
 
