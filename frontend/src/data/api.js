@@ -40,11 +40,13 @@ function sortData() {
   setPointGeo(dataSortCity[0].geom);
   return dataSortCity;
   */
-  //setPointGeo(dataSort[0].geom);
+  // setPointGeo(dataSort[0].geom);
+  dataSort = average();
   return dataSort;
 }
 
 function average() {
+  const arr = [];
   const sum = (station) => {
     let somme = 0;
     const num = station.carburants.length;
@@ -58,17 +60,19 @@ function average() {
 
   dataSort.forEach((station) => {
     const moyenne = sum(station);
-    const newStation = { ...station, moyenne: moyenne };
-    dataSortAverage.push(newStation);
+    const newStation = { ...station, moyenne };
+    arr.push(newStation);
   });
+
+  return arr;
 }
 
 function sortAverage() {
-  average();
-  dataSortAverage = dataSortAverage.sort((a, b) => {
+  dataSortAverage = [...dataSort];
+  const sortAverage = dataSortAverage.sort((a, b) => {
     return a.moyenne - b.moyenne;
   });
-  return dataSortAverage;
+  return sortAverage;
 }
 
 function getDataSort() {
@@ -76,17 +80,14 @@ function getDataSort() {
 }
 
 function getData(url, setFuelList, filters) {
- 
   axios.get(url).then((response) => {
     data = response.data.records;
     dataSort = [];
     dataSortAverage = [];
     sortData();
-    console.log(dataSort);
 
     if (filters.moinsChere) {
-      sortAverage();
-      setFuelList(dataSortAverage);
+      setFuelList(sortAverage());
     } else {
       setFuelList(dataSort);
     }

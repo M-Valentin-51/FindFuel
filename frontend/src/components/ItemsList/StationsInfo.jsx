@@ -12,7 +12,6 @@ import { useCurrentPosition } from "../../contexts/CurrentPositionContext";
 function StationsInfo(props) {
   const { currentPosition } = useCurrentPosition();
 
-  console.log(currentPosition);
   const { station } = props;
   const [isfavorite, setIsFavorite] = useState(false);
   function handleFavorite() {
