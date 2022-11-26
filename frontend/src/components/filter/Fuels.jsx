@@ -1,22 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import "../../../style/filter.css";
+import { sortFuel } from "../../data/api";
+
+import { useFuelList } from "../../contexts/FuelListContext";
 
 const fuelList = [
-  { nameFuel: "gasoil", isClicked: false },
-  { nameFuel: "gasoil +", isClicked: false },
-  { nameFuel: "E98", isClicked: false },
-  { nameFuel: "E95", isClicked: true },
+  { nameFuel: "Gazole", id: 1 },
+  { nameFuel: "Ethanol E85", id: 3 },
+  { nameFuel: "SP98 E5", id: 6 },
+  { nameFuel: "SP95 E5", id: 2 },
+  { nameFuel: "SP95 E10", id: 5 },
+  { nameFuel: "GPLc", id: 4 },
 ];
 
 function Fuel(props) {
-  const { nameFuel } = props;
-  return (
-    <li className="fuelElement">
-      <h2>{nameFuel}</h2>
-      <input type="checkbox" />
-    </li>
-  );
+  const { nameFuel, id } = props;
+  return <option value={id}>{nameFuel}</option>;
 }
 
 Fuel.propTypes = {
@@ -24,12 +24,24 @@ Fuel.propTypes = {
 };
 
 function Fuels() {
+  const { setFuelList } = useFuelList();
+
+  const [value, setValue] = useState(null);
+
+  useEffect(() => {
+    sortFuel({ filter: value, setFuelList });
+  }, [value]);
   return (
-    <ul className="container">
+    <select
+      className="container"
+      value={value}
+      onChange={(e) => setValue(parseInt(e.target.value))}
+    >
+      <option value={0}>Choisie un carburant</option>
       {fuelList.map((fuel) => (
-        <Fuel key={fuel.nameFuel} nameFuel={fuel.nameFuel} />
+        <Fuel key={fuel.nameFuel} nameFuel={fuel.nameFuel} id={fuel.id} />
       ))}
-    </ul>
+    </select>
   );
 }
 export default Fuels;

@@ -3,6 +3,7 @@ import axios from "axios";
 let data;
 let dataSort;
 let dataSortAverage;
+let currentData;
 
 function sortData() {
   dataSort = [];
@@ -42,6 +43,7 @@ function sortData() {
   */
   // setPointGeo(dataSort[0].geom);
   dataSort = average();
+  currentData = [...dataSort];
   return dataSort;
 }
 
@@ -72,11 +74,30 @@ function sortAverage() {
   const sortAverage = dataSortAverage.sort((a, b) => {
     return a.moyenne - b.moyenne;
   });
+  currentData = [...sortAverage];
   return sortAverage;
 }
 
 function getDataSort() {
+  currentData = [...dataSort];
   return dataSort;
+}
+
+export function sortFuel({ filter, setFuelList }) {
+  if (filter) {
+    const dd = currentData.filter((station) => {
+      const i = station.carburants.find(
+        (carbur) => carbur.carburantId == filter
+      );
+      if (i) {
+        return true;
+      }
+    });
+
+    setFuelList(dd);
+  } else {
+    setFuelList(currentData);
+  }
 }
 
 function getData(url, setFuelList, filters) {
