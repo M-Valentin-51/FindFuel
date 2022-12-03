@@ -63,6 +63,11 @@ code {
 button {
   font-size: calc(10px + 2vmin);
 }
+.button{
+  background-color: #24242a;
+  color: #61dafb;
+  border-bottom: 1px solid white;
+}
 
 .logoCarburant {
   width: 3.5rem;

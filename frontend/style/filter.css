@@ -12,8 +12,8 @@
   background-color: var(--colorPrimary);
 }
 .buttonContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  --display: grid;
+  --grid-template-columns: 1fr 1fr;
 }
 
 .filterButtons {
@@ -32,8 +32,22 @@ select {
   background-color: #24242a;
   border: none;
   text-align: center;
-  font-size: 1.2em;
+  font-size: 1em;
+  color: #09ace7;
 }
+
+.select , label{
+  margin: 1rem;
+  color: #09ace7;
+  text-align: center;
+}
+div.select:first-child {
+  border-bottom: 1px solid whitesmoke;
+}
+div.select:nth-child(3) {
+  border-top: 1px solid whitesmoke;
+}
+
 
 .container {
   display: flex;

@@ -33,16 +33,18 @@ function Fuels({ value, setValue }) {
     // sortFuel(value, setFuelList);
   }, [value]);
   return (
-    <select
-      className="container"
-      value={value}
-      onChange={(e) => setValue(parseInt(e.target.value))}
-    >
-      <option value={0}>Choisie un carburant</option>
-      {fuelList.map((fuel) => (
-        <Fuel key={fuel.nameFuel} nameFuel={fuel.nameFuel} id={fuel.id} />
-      ))}
-    </select>
+    <div className="select">
+      <select
+        className="select"
+        value={value}
+        onChange={(e) => setValue(parseInt(e.target.value))}
+      >
+        <option value={0}>Choisie un carburant</option>
+        {fuelList.map((fuel) => (
+          <Fuel key={fuel.nameFuel} nameFuel={fuel.nameFuel} id={fuel.id} />
+        ))}
+      </select>
+    </div>
   );
 }
 export default Fuels;

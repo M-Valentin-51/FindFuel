@@ -5,7 +5,7 @@ import Search from "./Search";
 import logo from "../../assets/logo_find_fuel_white.png";
 
 function NavBar(props) {
-  const { setVille, eventFilterButton, setCurrentPosition } = props;
+  const { setVille, eventFilterButton, setCurrentPosition, isShown } = props;
   return (
     <header>
       <img className="icon" src={logo} alt="The logo" />
@@ -13,6 +13,7 @@ function NavBar(props) {
         setVille={setVille}
         eventFilterButton={eventFilterButton}
         setCurrentPosition={setCurrentPosition}
+        isShown={isShown}
       />
     </header>
   );

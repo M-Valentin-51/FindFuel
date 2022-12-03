@@ -1,6 +1,6 @@
 .station {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 50vw);
   font-size: 0.8em;
   border-bottom: 2px solid #2171a3;
   gap: 2px;
@@ -39,6 +39,7 @@
   padding: 1rem;
   background-color: #24242a;
   color: wheat;
+  max-width: 10vw;
 }
 .figure p {
   color: aliceblue;

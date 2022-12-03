@@ -3,10 +3,10 @@
 -[x] Probleme affichage si carburant selectionnée et changement de filtre (plusProche / moinChere) 
     carburant selectionnée est afficher au prochain affichage 
 
--[] Fix css barre de recherche
+-[x] Fix css barre de recherche
 
--[] Fix css liste des stations
+-[x] Fix css liste des stations
 
--[] Fix css page de filtres
+-[x] Fix css page de filtres
 
--[] si on n'est pas geolocaliser ne pas afficher NaN km 
+-[x] si on n'est pas geolocaliser ne pas afficher NaN km 

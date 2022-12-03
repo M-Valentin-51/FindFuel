@@ -86,11 +86,15 @@ function App() {
         />
       )}
       <Leaflet geo={pointGeo} rayon={rayon} />
-      <button type="button" onClick={() => changeView()}>
+      <button type="button" className="button" onClick={() => changeView()}>
         {visible ? "⇩" : "⇧"}
       </button>
       {visible && <StationListing />}
-      <NavBar setVille={setCity} eventFilterButton={eventFilterButton} />
+      <NavBar
+        setVille={setCity}
+        eventFilterButton={eventFilterButton}
+        isShown={isShown}
+      />
     </div>
   );
 }

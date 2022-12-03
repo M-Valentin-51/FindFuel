@@ -32,36 +32,39 @@ function Buttons(props) {
   }
 
   return (
-    <div className="buttonContainer">
-      <button
-        id="moinsChere"
-        type="button"
-        className={`filterButtons ${
-          filters.moinsChere && "filterButtonsActive"
-        }`}
-        onClick={(e) => {
-          changeFilter(e.target.id);
-        }}
-      >
-        Le moins cher
-      </button>
-      <button
-        id="plusProche"
-        type="button"
-        className={`filterButtons ${
-          filters.plusProche && "filterButtonsActive"
-        }`}
-        onClick={(e) => {
-          changeFilter(e.target.id);
-        }}
-      >
-        Le plus proche
-      </button>
-      <button type="button" className="filterButtons">
-        Favoris
-      </button>
-      <div>
-        <select onChange={(e) => setRayon(e.target.value)}>
+    <>
+      <div className="buttonContainer">
+        <button
+          id="moinsChere"
+          type="button"
+          className={`filterButtons ${
+            filters.moinsChere && "filterButtonsActive"
+          }`}
+          onClick={(e) => {
+            changeFilter(e.target.id);
+          }}
+        >
+          Le moins cher
+        </button>
+        <button
+          id="plusProche"
+          type="button"
+          className={`filterButtons ${
+            filters.plusProche && "filterButtonsActive"
+          }`}
+          onClick={(e) => {
+            changeFilter(e.target.id);
+          }}
+        >
+          Le plus proche
+        </button>
+        <button type="button" className="filterButtons">
+          Favoris
+        </button>
+      </div>
+      <div className="select">
+        <label htmlFor="d">Distance</label>
+        <select onChange={(e) => setRayon(e.target.value)} className="select">
           {listRayons.map((elt) => {
             const select = elt === rayon;
             if (select) {
@@ -78,9 +81,9 @@ function Buttons(props) {
             );
           })}
         </select>
-        <label htmlFor="d">Distance</label>
+        km
       </div>
-    </div>
+    </>
   );
 }
 Buttons.propTypes = {

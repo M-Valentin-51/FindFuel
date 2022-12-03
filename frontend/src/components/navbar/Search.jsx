@@ -3,7 +3,11 @@ import PropTypes from "prop-types";
 import loupe from "@assets/loupe.png";
 import locationIcon from "@assets/localisation.png";
 import axios from "axios";
+import Filter from "@components/filter/Filter";
 import FilterButton from "../filter/FilterButton";
+import search from "./Image/search.png";
+import location from "./Image/location.png";
+import filter from "./Image/filter.png";
 
 // context
 
@@ -12,7 +16,7 @@ import { useCurrentPosition } from "../../contexts/CurrentPositionContext";
 function Search(props) {
   const { setCurrentPosition } = useCurrentPosition();
 
-  const { setVille, eventFilterButton } = props;
+  const { setVille, eventFilterButton, isShown } = props;
   const [city, setCity] = useState("");
 
   function handleClick(e) {
@@ -37,27 +41,41 @@ function Search(props) {
     });
   }
   return (
-    <form className="nav-search" onSubmit={(e) => handleClick(e)}>
-      <button type="button" className="positionAsk" onClick={handleValidation}>
-        <img src={locationIcon} alt="Location Ask" />
-      </button>
-      <input
-        name="city"
-        value={city}
-        className="search"
-        type="text"
-        placeholder="Recherche"
-        onChange={(event) => setCity(event.target.value)}
-      />
+    <>
+      <form className="nav-search" onSubmit={(e) => handleClick(e)}>
+        <button
+          type="button"
+          className="positionAsk"
+          onClick={handleValidation}
+        >
+          <img src={location} alt="Location Ask" />
+        </button>
+        <input
+          name="city"
+          value={city}
+          className="search"
+          type="text"
+          placeholder="Recherche"
+          onChange={(event) => setCity(event.target.value)}
+        />
+        <button
+          type="button"
+          className="searchButton"
+          onClick={(e) => handleClick(e)}
+        >
+          <img src={search} alt="Chercher" />
+        </button>
+        {/* <FilterButton eventFilterButton={eventFilterButton} /> */}
+      </form>
       <button
+        onClick={eventFilterButton}
+        className="buttonFilter"
         type="button"
-        className="searchButton"
-        onClick={(e) => handleClick(e)}
+        disabled={isShown}
       >
-        <img src={loupe} alt="Chercher" />
+        <img src={filter} alt="Filtre" />
       </button>
-      <FilterButton eventFilterButton={eventFilterButton} />
-    </form>
+    </>
   );
 }
 Search.propTypes = {
