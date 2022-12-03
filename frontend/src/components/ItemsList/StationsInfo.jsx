@@ -40,7 +40,8 @@ function StationsInfo(props) {
         />
       </button>
       <p className="stateStation">
-        {calculDistance(currentPosition, station.geom)} km
+        {!isNaN(calculDistance(currentPosition, station.geom)) &&
+          `${calculDistance(currentPosition, station.geom)} km`}
       </p>
       <p>
         Prix moyens de tous les carburant{" "}

@@ -3,14 +3,23 @@ import "../../../style/filter.css";
 import PropTypes from "prop-types";
 import Fuels from "./Fuels";
 import Buttons from "./Buttons";
+import { displayData } from "../../data/api";
 
 function Filter(props) {
-  const { setIsShown, filters, setFilters, setFuelList, setRayon, rayon } =
-    props;
+  const {
+    setIsShown,
+    filters,
+    setFilters,
+    setFuelList,
+    setRayon,
+    rayon,
+    value,
+    setValue,
+  } = props;
 
   return (
     <div className="containerFilter">
-      <Fuels />
+      <Fuels value={value} setValue={setValue} />
       <Buttons
         filters={filters}
         setFilters={setFilters}
@@ -22,6 +31,7 @@ function Filter(props) {
         className="close"
         onClick={() => {
           setIsShown(false);
+          displayData(filters, value, setFuelList);
         }}
       >
         X

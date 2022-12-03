@@ -23,13 +23,14 @@ Fuel.propTypes = {
   nameFuel: PropTypes.string.isRequired,
 };
 
-function Fuels() {
+function Fuels({ value, setValue }) {
   const { setFuelList } = useFuelList();
 
-  const [value, setValue] = useState(null);
+  // state a mettre dans apps !!!!!
+  // const [value, setValue] = useState(null);
 
   useEffect(() => {
-    sortFuel({ filter: value, setFuelList });
+    // sortFuel(value, setFuelList);
   }, [value]);
   return (
     <select

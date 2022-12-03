@@ -21,13 +21,13 @@ function Buttons(props) {
         plusProche: false,
         moinsChere: true,
       });
-      setFuelList(sortAverage());
+      // setFuelList(sortAverage());
     } else {
       setFilters({
         plusProche: true,
         moinsChere: false,
       });
-      setFuelList(getDataSort());
+      // setFuelList(getDataSort());
     }
   }
 

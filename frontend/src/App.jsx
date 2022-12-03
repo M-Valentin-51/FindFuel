@@ -23,6 +23,7 @@ function App() {
   const [visible, setVisible] = useState(false);
   const [rayon, setRayon] = useState("10000");
   const [geofilter, setGeoFilter] = useState(`${pointGeo} , ${rayon}`);
+  const [value, setValue] = useState(null);
   const [filters, setFilters] = useState({
     plusProche: true,
     moinsChere: false,
@@ -48,7 +49,7 @@ function App() {
   }, [city]);
 
   React.useEffect(() => {
-    getData(urlGeoDistance, setFuelList, filters);
+    getData(urlGeoDistance, setFuelList, filters, value);
   }, [geofilter]);
 
   React.useEffect(() => {
@@ -77,8 +78,11 @@ function App() {
           setIsShown={setIsShown}
           filters={filters}
           setFilters={setFilters}
+          setFuelList={setFuelList}
           setRayon={setRayon}
           rayon={rayon}
+          value={value}
+          setValue={setValue}
         />
       )}
       <Leaflet geo={pointGeo} rayon={rayon} />

@@ -1,0 +1,12 @@
+-[x] Afficher les station par rapport au carburant selectionner est par rapport au filtre (plusProche / moinChere)
+
+-[x] Probleme affichage si carburant selectionnée et changement de filtre (plusProche / moinChere) 
+    carburant selectionnée est afficher au prochain affichage 
+
+-[] Fix css barre de recherche
+
+-[] Fix css liste des stations
+
+-[] Fix css page de filtres
+
+-[] si on n'est pas geolocaliser ne pas afficher NaN km 
