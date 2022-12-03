@@ -2,11 +2,7 @@
   "name": "template-frontend",
   "private": true,
   "version": "0.0.0",
-<<<<<<< HEAD
   "homepage": "https://m-valentin-51.github.io",
-=======
-  "homepage": "http://m-valentin-51.github.io/FindFuel/",
->>>>>>> 7d84767efbf4823360e33c8d3b91c634bd84a52c
   "scripts": {
     "dev": "vite",
     "build": "vite build",
