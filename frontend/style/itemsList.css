@@ -1,6 +1,6 @@
 .station {
   display: grid;
-  grid-template-columns: repeat(2, 50vw);
+  grid-template-columns: repeat(2, 1fr);
   font-size: 0.8em;
   border-bottom: 2px solid #2171a3;
   gap: 2px;
@@ -44,7 +44,7 @@
 .figure p {
   color: aliceblue;
 }
-.figure figcaption{
+.figure figcaption {
   color: #019eff;
 }
 
@@ -94,4 +94,9 @@
 .stationInfo button {
   background-color: #24242a;
   border: none;
+}
+@media screen and (min-width: 800px) {
+  .listing {
+    width: 30vw;
+  }
 }

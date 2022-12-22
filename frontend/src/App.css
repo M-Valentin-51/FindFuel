@@ -19,6 +19,7 @@ code {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  --height: -webkit-fill-available;
 }
 
 .leaflet-container {
@@ -28,12 +29,6 @@ code {
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -51,19 +46,10 @@ code {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 button {
   font-size: calc(10px + 2vmin);
 }
-.button{
+.button {
   background-color: #24242a;
   color: #61dafb;
   border-bottom: 1px solid white;
@@ -71,4 +57,30 @@ button {
 
 .logoCarburant {
   width: 3.5rem;
+}
+/*
+@media screen and (max-width : 500px ){
+  html{
+  height: -webkit-fill-available;
+
+}
+  .App {
+    height: 100vh;
+    height: -webkit-fill-available;
+  }
+}
+*/
+@media screen and (min-width: 800px) {
+  .App {
+    display: grid;
+    grid-template-columns: 70vw 30vw;
+    grid-template-rows: 8vh 92vh;
+  }
+  .buttonList {
+    display: none;
+  }
+  .leaflet-container {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
 }

@@ -29,6 +29,8 @@ function App() {
     moinsChere: false,
   });
 
+  const withScreen = window.screen.availWidth;
+
   const eventFilterButton = () => {
     setIsShown(!isShown);
   };
@@ -70,6 +72,11 @@ function App() {
       setVisible(true);
     }
   }
+  React.useEffect(() => {
+    if (withScreen >= 800) {
+      changeView();
+    }
+  }, []);
 
   return (
     <div className="App">
@@ -86,7 +93,7 @@ function App() {
         />
       )}
       <Leaflet geo={pointGeo} rayon={rayon} />
-      <button type="button" className="button" onClick={() => changeView()}>
+      <button type="button" className="buttonList" onClick={() => changeView()}>
         {visible ? "⇩" : "⇧"}
       </button>
       {visible && <StationListing />}

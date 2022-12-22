@@ -39,7 +39,7 @@ function Fuels({ value, setValue }) {
         value={value}
         onChange={(e) => setValue(parseInt(e.target.value))}
       >
-        <option value={0}>Choisie un carburant</option>
+        <option value={0}>Choisi un carburant</option>
         {fuelList.map((fuel) => (
           <Fuel key={fuel.nameFuel} nameFuel={fuel.nameFuel} id={fuel.id} />
         ))}

@@ -12,7 +12,7 @@ function FuelItem(props) {
         alt="Fuels"
         className="logoCarburant"
       />
-      <figcaption>{fuel.prix}</figcaption>
+      <figcaption>{fuel.prix} €</figcaption>
     </figure>
   );
 }

@@ -28,6 +28,7 @@ function StationsInfo(props) {
           Ouvert
         </p>
       </header>
+      {/*
       <button type="button" onClick={handleFavorite}>
         <img
           className={
@@ -38,7 +39,7 @@ function StationsInfo(props) {
           src={isfavorite ? fullStar : emptyStar}
           alt="favorite"
         />
-      </button>
+      </button> */}
       <p className="stateStation">
         {!isNaN(calculDistance(currentPosition, station.geom)) &&
           `${calculDistance(currentPosition, station.geom)} km`}
